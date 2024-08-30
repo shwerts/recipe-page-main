@@ -38,21 +38,23 @@ main {
 
 .recipe {
   background-color: white;
-  width: 45rem;
+  max-width: 45rem;
   padding: 2.5rem;
   border-radius: 1.5rem;
+  margin: 3rem auto;
 }
 
 /* Recipe. The header */
 
-.recipe img {
+img {
   max-width: 100%;
   border-radius: 1rem;
 }
 
 h1 {
-  font-family: young-serif;
   font-size: 2.5rem;
+  margin: .9em 0 .6em;
+  font-family: young-serif;
   color: var(--stone-900);
 }
 
@@ -62,9 +64,13 @@ h1 {
   font-family: Outfit;
   background-color: var(--rose-50);
   color: var(--stone-600);
+  padding: 2rem;
+  margin: 2rem 0;
+  border-radius: 1rem;
 }
 
 .prep-time h2 {
+  font-size: 1.3rem;
   color: var(--rose-800);
   font-family: inherit;
 }
@@ -74,24 +80,68 @@ h1 {
 /* Recipe. The main content */
 
 h2 {
-  font-family: young-serif;
   font-size: 1.6rem;
+  margin-block-end: 1rem;
+  font-family: young-serif;
   color: var(--brown-800);
 }
+
+hr {margin: 2rem 0;}
 
 p, li {line-height: 140%;}
 
-.recipe span {
-  font-weight: 700;
-  color: var(--stone-600);
+li {padding-inline-start: 1rem;}
+ul, ol {
+  padding-inline-start: 1.4rem;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: .6rem;
 }
 
-*::marker {
-  font-size: 0.8rem;
+::marker {
   color: var(--brown-800);
   font-weight: 700;
 }
+ul *::marker {font-size: .8rem;}
 
 /* Recipe. The table */
 
-table {text-align: left;}
+table {
+  text-align: left;
+  width: 100%;
+  table-layout: fixed;
+}
+
+tr:not(:last-child) {border-block-end: 1px solid #ccc;}
+tr:last-child * {padding-block-end: 0;}
+
+th {
+  font-weight: 400;
+  padding: 1rem 2rem;
+}
+
+td {
+  font-weight: 700;
+  color: var(--brown-800);
+  padding-inline-start: 1rem;
+}
+
+section:has(table) p {margin-block: .8rem;}
+
+/* The mobile layout */
+
+@media screen and (max-width: 767px) {
+  .recipe {
+    margin: 0;
+    border-radius: 0;
+    padding: 0;
+  }
+
+  h1 {
+    font-weight: 500;
+    margin: .9em 2rem .6em;
+  }
+  img {border-radius: 0;}
+
+  .main-content {padding: 0 2rem 2.5rem;}
+}
